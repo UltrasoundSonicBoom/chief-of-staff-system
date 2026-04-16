@@ -1,0 +1,86 @@
+{
+  "team_name": "chief-of-staff-system",
+  "orchestrator": "Chief of Staff Agent",
+  "execution_principle": [
+    "plan",
+    "execute",
+    "review",
+    "verify",
+    "compound",
+    "repeat"
+  ],
+  "shared_rules": {
+    "dashboard_is_view": true,
+    "master_db_is_source": true,
+    "require_canonical_slug": true,
+    "require_owner_agent": true,
+    "max_top_items_for_user": 3,
+    "all_actions_need_first_2_minute_step": true,
+    "show_before_save_for_external_writes": true
+  },
+  "data_systems": {
+    "notion": "operating_hq",
+    "obsidian": "knowledge_and_project_memory",
+    "things": "execution_system",
+    "google_calendar": "time_commitments",
+    "apple_reminders": "small_life_admin"
+  },
+  "agents": [
+    {
+      "name": "Chief of Staff Agent",
+      "domain": ["Executive"],
+      "cadence": "daily",
+      "automation_mode": "autonomous",
+      "escalates_to": null
+    },
+    {
+      "name": "Finance Agent",
+      "domain": ["Finance"],
+      "cadence": "daily",
+      "automation_mode": "autonomous",
+      "escalates_to": "Chief of Staff Agent"
+    },
+    {
+      "name": "Family Operations Agent",
+      "domain": ["Family"],
+      "cadence": "daily",
+      "automation_mode": "autonomous",
+      "escalates_to": "Chief of Staff Agent"
+    },
+    {
+      "name": "Home & Purchasing Agent",
+      "domain": ["Home"],
+      "cadence": "weekly",
+      "automation_mode": "assisted",
+      "escalates_to": "Chief of Staff Agent"
+    },
+    {
+      "name": "Professional Strategy Agent",
+      "domain": ["Professional"],
+      "cadence": "weekly",
+      "automation_mode": "autonomous",
+      "escalates_to": "Chief of Staff Agent"
+    },
+    {
+      "name": "KRTA Strategy Agent",
+      "domain": ["KRTA"],
+      "cadence": "weekly",
+      "automation_mode": "assisted",
+      "escalates_to": "Chief of Staff Agent"
+    },
+    {
+      "name": "Venture Studio Agent",
+      "domain": ["Venture"],
+      "cadence": "weekly",
+      "automation_mode": "assisted",
+      "escalates_to": "Chief of Staff Agent"
+    },
+    {
+      "name": "Device / Security / Infra Agent",
+      "domain": ["Infra"],
+      "cadence": "weekly",
+      "automation_mode": "autonomous",
+      "escalates_to": "Chief of Staff Agent"
+    }
+  ]
+}
