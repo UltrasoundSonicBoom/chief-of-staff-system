@@ -1,0 +1,26 @@
+{
+  "name": "chief-of-staff-system",
+  "version": "1.0.0",
+  "description": "Personal multi-agent chief-of-staff operating system for Jayce.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UltrasoundSonicBoom/chief-of-staff-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UltrasoundSonicBoom/chief-of-staff-system/issues"
+  },
+  "homepage": "https://github.com/UltrasoundSonicBoom/chief-of-staff-system#readme",
+  "dependencies": {
+    "@jackchen_me/open-multi-agent": "^1.1.0"
+  }
+}

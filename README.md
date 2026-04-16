@@ -24,6 +24,12 @@ Initial focus:
 4. KRTA Strategy Agent
 5. Family Operations Agent
 
+Installed local references:
+- oh-my-codex (global install + workspace setup)
+- CCteam-creator skill (installed into ~/.claude/skills/CCteam-creator)
+- homeassistant-claude-kit (local venv via make setup)
+- @jackchen_me/open-multi-agent (workspace dependency)
+
 See:
 - docs/notion-hq-core-spec.md
 - docs/team-roster.md
