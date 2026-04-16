@@ -12,6 +12,7 @@
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
     "bootstrap": "tsx src/index.ts",
+    "ingest-checks": "tsx src/workflows/run-ingest-checks.ts",
     "test": "echo \"No tests yet\""
   },
   "repository": {

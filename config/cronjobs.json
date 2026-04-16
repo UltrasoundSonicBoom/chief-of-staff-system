@@ -1,0 +1,24 @@
+{
+  "jobs": [
+    {
+      "name": "chief-of-staff-morning-brief",
+      "schedule": "0 8 * * 1-6",
+      "purpose": "Morning top-3 brief and risk compression"
+    },
+    {
+      "name": "finance-agent-sweep",
+      "schedule": "0 9,14,21 * * *",
+      "purpose": "Finance risk, cashflow, renewal, and major-event sweep"
+    },
+    {
+      "name": "family-operations-sweep",
+      "schedule": "30 6,20 * * *",
+      "purpose": "Family prep, school/academy, reminder readiness sweep"
+    },
+    {
+      "name": "krta-strategy-email-sweep",
+      "schedule": "0 10,16,22 * * 1-6",
+      "purpose": "KRTA initiative and email-thread strategy sweep"
+    }
+  ]
+}
