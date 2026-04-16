@@ -30,6 +30,17 @@ Installed local references:
 - homeassistant-claude-kit (local venv via make setup)
 - @jackchen_me/open-multi-agent (workspace dependency)
 
+Runtime scaffold:
+- `src/index.ts` boots a minimal chief-of-staff team via open-multi-agent
+- `src/config/` loads team and agent configs
+- `src/orchestration/` builds the initial team
+- `config/agents/*.json` defines persona-aware agent settings
+
+Useful commands:
+- `npm run build`
+- `npm run bootstrap`
+- `omx doctor`
+
 See:
 - docs/notion-hq-core-spec.md
 - docs/team-roster.md
