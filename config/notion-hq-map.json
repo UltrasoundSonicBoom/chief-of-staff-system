@@ -1,0 +1,105 @@
+{
+  "hq": {
+    "chief_of_staff_hq": {
+      "page_id": "344f0986-d20a-81f5-991d-df888944f926",
+      "url": "https://www.notion.so/Hermes-Chief-of-Staff-HQ-344f0986d20a81f5991ddf888944f926"
+    },
+    "page_registry": {
+      "database_id": "6a330e05-cce1-4307-a947-df1d3530df23",
+      "data_source_id": "ae92612b-b625-43e7-b3e8-a485eb2bbea0"
+    },
+    "database_registry": {
+      "database_id": "0a4f4c9e-490a-4575-98de-783532906678",
+      "data_source_id": "a97f06c7-5f69-4900-8611-604c82c059b8"
+    },
+    "agents": {
+      "database_id": "ced95683-a5bd-433e-9c0e-bdaafed0b88e",
+      "data_source_id": "1fee4249-534c-4686-acba-d0c8f681f77b"
+    },
+    "roles_goals": {
+      "database_id": "52aff46c-f4ba-4079-bd1a-99ee15a42c9d",
+      "data_source_id": "8ba3c0c7-8708-4555-a01d-083be89fa169"
+    },
+    "projects": {
+      "database_id": "8d7a0678-4eeb-4d82-a717-b74472c71820",
+      "data_source_id": "637df2ad-b650-4f6c-988f-dbf7095e77ee"
+    },
+    "operating_signals": {
+      "database_id": "30fabd76-f87a-4e11-971e-82715590049f",
+      "data_source_id": "f086c6de-154f-4990-819f-1efeccb484a4"
+    }
+  },
+  "domains": {
+    "finance": {
+      "page_id": "344f0986-d20a-81a7-a947-f2e3c046ec84",
+      "url": "https://www.notion.so/Finance-HQ-344f0986d20a81a7a947f2e3c046ec84",
+      "databases": {
+        "ledger": "Finance Ledger",
+        "major_events": "Finance Major Events",
+        "renewals": "Finance Renewals"
+      }
+    },
+    "family": {
+      "page_id": "344f0986-d20a-81ed-9f9a-e3b931faf1ff",
+      "url": "https://www.notion.so/Family-HQ-344f0986d20a81ed9f9ae3b931faf1ff",
+      "databases": {
+        "commitments": "Family Commitments",
+        "school_inbox": "School & Academy Inbox",
+        "prep_supplies": "Prep & Supplies"
+      }
+    },
+    "krta": {
+      "page_id": "344f0986-d20a-81b9-94f9-d4d6db889039",
+      "url": "https://www.notion.so/KRTA-Strategy-HQ-344f0986d20a81b994f9d4d6db889039",
+      "databases": {
+        "initiatives": "KRTA Initiatives",
+        "committee_tracker": "KRTA Committee Tracker",
+        "source_inbox": "KRTA Source Inbox",
+        "email_threads": "KRTA Email Threads"
+      }
+    }
+  },
+  "agent_context": {
+    "Chief of Staff Agent": [
+      "hq.chief_of_staff_hq",
+      "hq.agents",
+      "hq.roles_goals",
+      "hq.projects",
+      "hq.operating_signals"
+    ],
+    "Finance Agent": [
+      "domains.finance",
+      "hq.projects",
+      "hq.operating_signals"
+    ],
+    "Family Operations Agent": [
+      "domains.family",
+      "hq.projects",
+      "hq.operating_signals"
+    ],
+    "Home & Purchasing Agent": [
+      "domains.family",
+      "hq.projects",
+      "hq.operating_signals"
+    ],
+    "Professional Strategy Agent": [
+      "hq.roles_goals",
+      "hq.projects",
+      "hq.operating_signals"
+    ],
+    "KRTA Strategy Agent": [
+      "domains.krta",
+      "hq.projects",
+      "hq.operating_signals"
+    ],
+    "Venture Studio Agent": [
+      "hq.roles_goals",
+      "hq.projects",
+      "hq.operating_signals"
+    ],
+    "Device / Security / Infra Agent": [
+      "hq.operating_signals",
+      "hq.projects"
+    ]
+  }
+}

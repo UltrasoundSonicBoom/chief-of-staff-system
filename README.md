@@ -47,4 +47,9 @@ Useful commands:
 See:
 - docs/notion-hq-core-spec.md
 - docs/team-roster.md
+- docs/team-settings.md
+- docs/team-operating-playbook.md
+- docs/startup-playbooks.md
+- docs/domain-context-map.md
+- docs/agent-personas.md
 - docs/orchestration.md
