@@ -37,8 +37,11 @@ Runtime scaffold:
 - `config/agents/*.json` defines persona-aware agent settings
 
 Useful commands:
+- `npm install`
 - `npm run build`
 - `npm run bootstrap`
+- `npm run bootstrap -- daily`
+- `npm run bootstrap -- weekly`
 - `omx doctor`
 
 See:
