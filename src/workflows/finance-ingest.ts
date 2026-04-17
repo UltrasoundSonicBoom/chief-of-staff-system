@@ -1,6 +1,7 @@
 import { getAgentContextTargets } from '../config/load-notion-hq-map.js'
 import { loadNotionHqMap } from '../config/load-notion-hq-map.js'
 import { ensureSignal, searchExistingNotionObjects, upsertBasicRecord } from '../notion/notion-hq-core.js'
+import { collectFinanceMailSignals } from '../sources/finance-mail-source.js'
 
 export async function runFinanceIngest() {
   const contextTargets = getAgentContextTargets('Finance Agent')
@@ -8,6 +9,7 @@ export async function runFinanceIngest() {
   const finance = map.domains.finance as { databases: { ledger: { data_source_id: string }, major_events: { data_source_id: string } } }
   const signalDataSourceId = (map.hq.operating_signals as { data_source_id: string }).data_source_id
   const notionSearch = await searchExistingNotionObjects('Finance HQ')
+  const mailSignals = await collectFinanceMailSignals()
 
   const ledgerRecord = await upsertBasicRecord({
     dataSourceId: finance.databases.ledger.data_source_id,
@@ -25,7 +27,7 @@ export async function runFinanceIngest() {
       금액: { number: 0 },
       거래일: { date: { start: new Date().toISOString().slice(0, 10) } },
       출처: { select: { name: 'Manual' } },
-      상태: { status: { name: 'Not started' } },
+      상태: { status: { name: '시작전' } },
       '담당 에이전트': { rich_text: [{ text: { content: 'Finance Agent' } }] },
       비고: { rich_text: [{ text: { content: 'autonomous finance ingest heartbeat' } }] },
     },
@@ -72,6 +74,9 @@ export async function runFinanceIngest() {
     contextTargets,
     checks: {
       notionSearchCount: Array.isArray(notionSearch.results) ? notionSearch.results.length : 0,
+      gmailAuthOk: mailSignals.auth.ok,
+      gmailQueryCount: mailSignals.queryCount,
+      gmailMessageCount: mailSignals.messages.length,
     },
     writes: {
       ledgerRecordMode: ledgerRecord.mode,

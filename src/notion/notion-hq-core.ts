@@ -114,7 +114,7 @@ export async function ensureSignal(args: {
       도메인: { select: { name: args.domain } },
       심각도: { select: { name: args.severity } },
       '담당 에이전트': { rich_text: [{ text: { content: args.ownerAgent } }] },
-      상태: { status: { name: 'Not started' } },
+      상태: { status: { name: '시작전' } },
       발생일: { date: { start: new Date().toISOString().slice(0, 10) } },
       '검토 기한': { date: { start: args.reviewBy } },
       요약: { rich_text: [{ text: { content: args.summary } }] },

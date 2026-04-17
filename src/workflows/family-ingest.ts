@@ -1,6 +1,7 @@
 import { getAgentContextTargets } from '../config/load-notion-hq-map.js'
 import { loadNotionHqMap } from '../config/load-notion-hq-map.js'
 import { ensureSignal, searchExistingNotionObjects, upsertBasicRecord } from '../notion/notion-hq-core.js'
+import { collectFamilyMailSignals } from '../sources/family-mail-source.js'
 
 export async function runFamilyIngest() {
   const contextTargets = getAgentContextTargets('Family Operations Agent')
@@ -8,6 +9,7 @@ export async function runFamilyIngest() {
   const family = map.domains.family as { databases: { commitments: { data_source_id: string }, school_inbox: { data_source_id: string }, prep_supplies: { data_source_id: string } } }
   const signalDataSourceId = (map.hq.operating_signals as { data_source_id: string }).data_source_id
   const notionSearch = await searchExistingNotionObjects('Family HQ')
+  const mailSignals = await collectFamilyMailSignals()
 
   const schoolInbox = await upsertBasicRecord({
     dataSourceId: family.databases.school_inbox.data_source_id,
@@ -69,6 +71,9 @@ export async function runFamilyIngest() {
     contextTargets,
     checks: {
       notionSearchCount: Array.isArray(notionSearch.results) ? notionSearch.results.length : 0,
+      gmailAuthOk: mailSignals.auth.ok,
+      gmailQueryCount: mailSignals.queryCount,
+      gmailMessageCount: mailSignals.messages.length,
     },
     writes: {
       schoolInboxMode: schoolInbox.mode,

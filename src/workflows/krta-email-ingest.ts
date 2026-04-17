@@ -1,6 +1,7 @@
 import { getAgentContextTargets } from '../config/load-notion-hq-map.js'
 import { loadNotionHqMap } from '../config/load-notion-hq-map.js'
 import { ensureSignal, findPageInRegistryBySlug, searchExistingNotionObjects, upsertBasicRecord } from '../notion/notion-hq-core.js'
+import { collectKrtaMailSignals } from '../sources/krta-mail-source.js'
 
 export async function runKrtaEmailIngest() {
   const contextTargets = getAgentContextTargets('KRTA Strategy Agent')
@@ -8,8 +9,14 @@ export async function runKrtaEmailIngest() {
   const threadDataSourceId = (map.domains.krta as { databases: { email_threads: { data_source_id: string } } }).databases.email_threads.data_source_id
   const signalDataSourceId = (map.hq.operating_signals as { data_source_id: string }).data_source_id
 
-  const threadRegistryCheck = await findPageInRegistryBySlug('krta-thread-homepage-office')
+  let threadRegistryCheck: { results?: unknown[] } = {}
+  try {
+    threadRegistryCheck = await findPageInRegistryBySlug('krta-thread-homepage-office')
+  } catch {
+    threadRegistryCheck = { results: [] }
+  }
   const notionSearch = await searchExistingNotionObjects('KRTA Email Threads')
+  const mailSignals = await collectKrtaMailSignals()
   const bootstrapThread = await upsertBasicRecord({
     dataSourceId: threadDataSourceId,
     titleProperty: '이름',
@@ -23,7 +30,7 @@ export async function runKrtaEmailIngest() {
     extraProperties: {
       '스레드 ID': { rich_text: [{ text: { content: 'bootstrap-thread' } }] },
       상대방: { select: { name: '기타' } },
-      상태: { status: { name: 'Not started' } },
+      상태: { status: { name: '시작전' } },
       '이메일 상태': { select: { name: '진행중' } },
       방향: { select: { name: 'Inbound' } },
       '최근 메일 일시': { date: { start: new Date().toISOString().slice(0, 10) } },
@@ -54,6 +61,9 @@ export async function runKrtaEmailIngest() {
     checks: {
       threadRegistryHits: Array.isArray(threadRegistryCheck.results) ? threadRegistryCheck.results.length : 0,
       notionSearchCount: Array.isArray(notionSearch.results) ? notionSearch.results.length : 0,
+      gmailAuthOk: mailSignals.auth.ok,
+      gmailQueryCount: mailSignals.queryCount,
+      gmailMessageCount: mailSignals.messages.length,
     },
     writes: {
       bootstrapThreadMode: bootstrapThread.mode,

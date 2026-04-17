@@ -1,15 +1,8 @@
-import { runKrtaEmailIngest } from './krta-email-ingest.js'
-import { runFinanceIngest } from './finance-ingest.js'
-import { runFamilyIngest } from './family-ingest.js'
+import { buildChiefOfStaffBrief } from './chief-of-staff-brief.js'
 
 async function main() {
-  const [krta, finance, family] = await Promise.all([
-    runKrtaEmailIngest(),
-    runFinanceIngest(),
-    runFamilyIngest(),
-  ])
-
-  console.log(JSON.stringify({ krta, finance, family }, null, 2))
+  const brief = await buildChiefOfStaffBrief()
+  console.log(JSON.stringify(brief, null, 2))
 }
 
 main().catch((error) => {
