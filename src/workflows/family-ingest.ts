@@ -11,20 +11,21 @@ export async function runFamilyIngest() {
 
   const schoolInbox = await upsertBasicRecord({
     dataSourceId: family.databases.school_inbox.data_source_id,
-    titleProperty: 'Name',
-    title: 'Family ingest heartbeat',
+    titleProperty: '이름',
+    title: '가족 인제스트 하트비트',
     slug: 'family-ingest-heartbeat',
+    slugPropertyName: '표준 슬러그',
     domain: 'Family',
     ownerAgent: 'Family Operations Agent',
     sourceSystem: 'Hermes',
     runId: 'family-ingest-runtime',
     extraProperties: {
-      'Source Type': { select: { name: 'Notice' } },
-      Person: { select: { name: '채린' } },
-      Imported: { checkbox: false },
-      Date: { date: { start: new Date().toISOString().slice(0, 10) } },
-      Summary: { rich_text: [{ text: { content: 'school/academy/prep ingestion loop active' } }] },
-      'Source URL': { url: null },
+      '자료 유형': { select: { name: 'Notice' } },
+      대상자: { select: { name: '채린' } },
+      '반영 여부': { checkbox: false },
+      날짜: { date: { start: new Date().toISOString().slice(0, 10) } },
+      요약: { rich_text: [{ text: { content: 'school/academy/prep ingestion loop active' } }] },
+      '원문 링크': { url: null },
     },
   })
 
@@ -33,6 +34,7 @@ export async function runFamilyIngest() {
     titleProperty: 'Name',
     title: '이번 주 준비물 점검',
     slug: 'family-weekly-prep-check',
+    slugPropertyName: 'Canonical Slug',
     domain: 'Family',
     ownerAgent: 'Family Operations Agent',
     sourceSystem: 'Hermes',

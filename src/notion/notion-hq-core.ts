@@ -7,7 +7,7 @@ export async function findPageInRegistryBySlug(slug: string, root = process.cwd(
   const dataSourceId = (map.hq.page_registry as { data_source_id: string }).data_source_id
   return queryDataSource(dataSourceId, {
     filter: {
-      property: 'Canonical Slug',
+      property: '표준 슬러그',
       rich_text: { equals: slug },
     },
     page_size: 5,
@@ -19,7 +19,7 @@ export async function findDatabaseInRegistryBySlug(slug: string, root = process.
   const dataSourceId = (map.hq.database_registry as { data_source_id: string }).data_source_id
   return queryDataSource(dataSourceId, {
     filter: {
-      property: 'Canonical Slug',
+      property: '표준 슬러그',
       rich_text: { equals: slug },
     },
     page_size: 5,
@@ -35,6 +35,7 @@ export async function upsertBasicRecord(args: {
   titleProperty: string
   title: string
   slug?: string
+  slugPropertyName?: string
   domain: string
   ownerAgent: string
   sourceSystem: string
@@ -42,6 +43,7 @@ export async function upsertBasicRecord(args: {
   extraProperties?: Record<string, unknown>
 }) {
   const canonicalSlug = args.slug ?? slugify(args.title)
+  const slugPropertyName = args.slugPropertyName ?? '표준 슬러그'
   const metadata = {
     canonical_slug: canonicalSlug,
     ...buildMetadata(args.ownerAgent, args.domain, args.sourceSystem, args.runId),
@@ -53,7 +55,7 @@ export async function upsertBasicRecord(args: {
 
   const result = await queryDataSource(args.dataSourceId, {
     filter: {
-      property: 'Canonical Slug',
+      property: slugPropertyName,
       rich_text: { equals: canonicalSlug },
     },
     page_size: 1,
@@ -63,7 +65,7 @@ export async function upsertBasicRecord(args: {
     [args.titleProperty]: {
       title: [{ text: { content: args.title } }],
     },
-    'Canonical Slug': {
+    [slugPropertyName]: {
       rich_text: [{ text: { content: canonicalSlug } }],
     },
     ...args.extraProperties,
@@ -99,24 +101,25 @@ export async function ensureSignal(args: {
 }) {
   return upsertBasicRecord({
     dataSourceId: args.dataSourceId,
-    titleProperty: 'Name',
+    titleProperty: '이름',
     title: args.title,
     slug: args.slug,
+    slugPropertyName: '표준 슬러그',
     domain: args.domain,
     ownerAgent: args.ownerAgent,
     sourceSystem: 'Hermes',
     runId: args.runId,
     extraProperties: {
-      'Signal Type': { select: { name: args.signalType } },
-      Domain: { select: { name: args.domain } },
-      Severity: { select: { name: args.severity } },
-      'Owner Agent': { rich_text: [{ text: { content: args.ownerAgent } }] },
-      Status: { status: { name: 'Not started' } },
-      'Trigger Date': { date: { start: new Date().toISOString().slice(0, 10) } },
-      'Review By': { date: { start: args.reviewBy } },
-      Summary: { rich_text: [{ text: { content: args.summary } }] },
-      'Escalation Needed': { checkbox: args.escalationNeeded ?? false },
-      'Related Project': { rich_text: [{ text: { content: '-' } }] },
+      '시그널 유형': { select: { name: args.signalType } },
+      도메인: { select: { name: args.domain } },
+      심각도: { select: { name: args.severity } },
+      '담당 에이전트': { rich_text: [{ text: { content: args.ownerAgent } }] },
+      상태: { status: { name: 'Not started' } },
+      발생일: { date: { start: new Date().toISOString().slice(0, 10) } },
+      '검토 기한': { date: { start: args.reviewBy } },
+      요약: { rich_text: [{ text: { content: args.summary } }] },
+      '즉시 보고 필요': { checkbox: args.escalationNeeded ?? false },
+      '관련 프로젝트': { rich_text: [{ text: { content: '-' } }] },
     },
   })
 }

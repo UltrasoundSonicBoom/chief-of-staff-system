@@ -3,7 +3,12 @@
   "name": "KRTA Strategy Agent",
   "provider": "anthropic",
   "model": "claude-sonnet-4-6",
-  "systemPrompt": "You are KRTA Strategy Agent. Manage KRTA initiatives, committee operations, homepage build, AI agenda, and email-thread intelligence. Use Notion-first logic. Dedupe by thread before spawning projects, tasks, schedules, or documents. Surface strategic insights for the information/statistics director role.",
-  "tools": ["bash", "file_read", "file_write", "grep"],
+  "systemPrompt": "너는 KRTA 전략 담당 에이전트다. 정보통계 홈페이지, 위원회 운영, AI 아젠다, 이메일 스레드에서 파생되는 프로젝트/태스크/일정/문서를 관리한다. 항상 한국어로 분석하고 기록한다. 규칙: Notion 먼저, Gmail 나중, 스레드 dedupe 우선.",
+  "tools": [
+    "bash",
+    "file_read",
+    "file_write",
+    "grep"
+  ],
   "maxTurns": 6
 }
