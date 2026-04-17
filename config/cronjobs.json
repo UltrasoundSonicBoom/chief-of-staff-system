@@ -19,6 +19,26 @@
       "name": "krta-strategy-email-sweep",
       "schedule": "0 10,16,22 * * 1-6",
       "purpose": "KRTA initiative and email-thread strategy sweep"
+    },
+    {
+      "name": "professional-strategy-sweep",
+      "schedule": "30 11,18 * * 1-6",
+      "purpose": "Hospital, SNUHmate, and professional milestone sweep"
+    },
+    {
+      "name": "home-purchasing-sweep",
+      "schedule": "0 12,19 * * 1-6",
+      "purpose": "Home maintenance, inventory, and reorder sweep"
+    },
+    {
+      "name": "venture-studio-weekly",
+      "schedule": "0 15 * * 0,3",
+      "purpose": "Idea promotion, PRD candidate, and opportunity review"
+    },
+    {
+      "name": "infra-security-sweep",
+      "schedule": "30 7,17 * * *",
+      "purpose": "Storage, backup, security, and machine-readiness sweep"
     }
   ]
 }

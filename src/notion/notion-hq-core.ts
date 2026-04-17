@@ -1,5 +1,5 @@
 import { slugify, buildMetadata, validateMetadata } from './metadata.js'
-import { createPage, patchDataSource, queryDataSource, searchNotion } from '../notion/client.js'
+import { createPage, patchDataSource, queryDataSource, searchNotion, updatePage } from '../notion/client.js'
 import { loadNotionHqMap } from '../config/load-notion-hq-map.js'
 
 export async function findPageInRegistryBySlug(slug: string, root = process.cwd()) {
@@ -59,11 +59,6 @@ export async function upsertBasicRecord(args: {
     page_size: 1,
   })
 
-  const existing = (result.results as Array<Record<string, unknown>> | undefined)?.[0]
-  if (existing) {
-    return { mode: 'existing', page: existing }
-  }
-
   const properties: Record<string, unknown> = {
     [args.titleProperty]: {
       title: [{ text: { content: args.title } }],
@@ -74,12 +69,56 @@ export async function upsertBasicRecord(args: {
     ...args.extraProperties,
   }
 
+  const existing = (result.results as Array<Record<string, unknown>> | undefined)?.[0]
+  if (existing) {
+    const pageId = String(existing.id)
+    const updated = await updatePage(pageId, properties)
+    return { mode: 'updated', page: updated }
+  }
+
   const page = await createPage({
     parent: { data_source_id: args.dataSourceId },
     properties,
   })
 
   return { mode: 'created', page }
+}
+
+export async function ensureSignal(args: {
+  dataSourceId: string
+  title: string
+  slug: string
+  domain: string
+  ownerAgent: string
+  summary: string
+  severity: 'Critical' | 'High' | 'Medium' | 'Low'
+  signalType: 'KPI' | 'Risk' | 'Alert' | 'Decision Needed' | 'Deadline' | 'Opportunity' | 'Review' | 'Incident'
+  reviewBy: string
+  escalationNeeded?: boolean
+  runId: string
+}) {
+  return upsertBasicRecord({
+    dataSourceId: args.dataSourceId,
+    titleProperty: 'Name',
+    title: args.title,
+    slug: args.slug,
+    domain: args.domain,
+    ownerAgent: args.ownerAgent,
+    sourceSystem: 'Hermes',
+    runId: args.runId,
+    extraProperties: {
+      'Signal Type': { select: { name: args.signalType } },
+      Domain: { select: { name: args.domain } },
+      Severity: { select: { name: args.severity } },
+      'Owner Agent': { rich_text: [{ text: { content: args.ownerAgent } }] },
+      Status: { status: { name: 'Not started' } },
+      'Trigger Date': { date: { start: new Date().toISOString().slice(0, 10) } },
+      'Review By': { date: { start: args.reviewBy } },
+      Summary: { rich_text: [{ text: { content: args.summary } }] },
+      'Escalation Needed': { checkbox: args.escalationNeeded ?? false },
+      'Related Project': { rich_text: [{ text: { content: '-' } }] },
+    },
+  })
 }
 
 export async function extendDataSourceProperties(dataSourceId: string, properties: Record<string, unknown>) {

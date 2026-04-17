@@ -34,28 +34,58 @@
       "page_id": "344f0986-d20a-81a7-a947-f2e3c046ec84",
       "url": "https://www.notion.so/Finance-HQ-344f0986d20a81a7a947f2e3c046ec84",
       "databases": {
-        "ledger": "Finance Ledger",
-        "major_events": "Finance Major Events",
-        "renewals": "Finance Renewals"
+        "ledger": {
+          "name": "Finance Ledger",
+          "data_source_id": "77fd7848-b59a-40c4-8198-f8cd247de748"
+        },
+        "major_events": {
+          "name": "Finance Major Events",
+          "data_source_id": "6024c061-c74f-48af-ab00-172ecb77fef2"
+        },
+        "renewals": {
+          "name": "Finance Renewals",
+          "data_source_id": "d2996447-92f1-4275-b506-17c5cea5126c"
+        }
       }
     },
     "family": {
       "page_id": "344f0986-d20a-81ed-9f9a-e3b931faf1ff",
       "url": "https://www.notion.so/Family-HQ-344f0986d20a81ed9f9ae3b931faf1ff",
       "databases": {
-        "commitments": "Family Commitments",
-        "school_inbox": "School & Academy Inbox",
-        "prep_supplies": "Prep & Supplies"
+        "commitments": {
+          "name": "Family Commitments",
+          "data_source_id": "186df70b-f529-41ac-b4d3-91bf27c4c332"
+        },
+        "school_inbox": {
+          "name": "School & Academy Inbox",
+          "data_source_id": "f415aba4-98f8-4e67-b1bc-715ddaa46cb6"
+        },
+        "prep_supplies": {
+          "name": "Prep & Supplies",
+          "data_source_id": "b896cefc-4c1b-4cd6-942f-122e12e931e5"
+        }
       }
     },
     "krta": {
       "page_id": "344f0986-d20a-81b9-94f9-d4d6db889039",
       "url": "https://www.notion.so/KRTA-Strategy-HQ-344f0986d20a81b994f9d4d6db889039",
       "databases": {
-        "initiatives": "KRTA Initiatives",
-        "committee_tracker": "KRTA Committee Tracker",
-        "source_inbox": "KRTA Source Inbox",
-        "email_threads": "KRTA Email Threads"
+        "initiatives": {
+          "name": "KRTA Initiatives",
+          "data_source_id": "069c495d-6ae9-468e-8207-1db056bd6132"
+        },
+        "committee_tracker": {
+          "name": "KRTA Committee Tracker",
+          "data_source_id": "d64df385-2394-439e-b705-0a9ed56fcba4"
+        },
+        "source_inbox": {
+          "name": "KRTA Source Inbox",
+          "data_source_id": "4a5a25ac-0747-4e90-ae4a-b905fe0ce671"
+        },
+        "email_threads": {
+          "name": "KRTA Email Threads",
+          "data_source_id": "95d54ae8-ee77-4e58-9e06-d71b9e11acf3"
+        }
       }
     }
   },

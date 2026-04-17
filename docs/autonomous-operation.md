@@ -7,6 +7,10 @@ This system is intended to run without waiting for the user on every cycle.
 - Finance sweep
 - Family preparation sweep
 - KRTA email / initiative sweep
+- Professional strategy sweep
+- Home & purchasing sweep
+- Infra / security sweep
+- Venture studio weekly sweep
 - Weekly rebalance
 
 ## Autonomy rules
