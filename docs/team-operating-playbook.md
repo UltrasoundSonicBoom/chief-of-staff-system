@@ -1,55 +1,61 @@
 # Team Operating Playbook
 
 ## Team roster
-- Chief of Staff Agent
-- Finance Agent
-- Family Operations Agent
-- Home & Purchasing Agent
-- Professional Strategy Agent
-- KRTA Strategy Agent
-- Venture Studio Agent
-- Device / Security / Infra Agent
+- 도담(Chief)
+- 금결(Finance)
+- 채움(Family)
+- 살림(Home)
+- 진두(Pro)
+- 한결(KRTA)
+- 새김(Venture)
+- 보루(Infra)
+
+## 호출 규칙
+- 사용자에게는 한국어 이름을 기본으로 보여준다.
+- 화면 표시는 `이름(도메인)` 형식을 사용한다.
+- 한국어 이름과 영어 별칭 둘 다 허용한다.
+- 예: `도담`, `Chief`, `Chief of Staff` 모두 같은 에이전트로 해석한다.
 
 ## What each agent owns
 
-### Chief of Staff Agent
+### 도담(Chief)
 - global prioritization
 - daily and evening brief
 - cross-domain escalation
 - top 3 compression for the user
 
-### Finance Agent
+### 금결(Finance)
 - debt, cashflow, major events, renewals
 - alerts for high-risk financial commitments
 - monthly finance summaries
 
-### Family Operations Agent
+### 채움(Family)
 - school/academy/homework/prep-item operations
 - family logistics brief
 - deadline and missing-item alerts
 
-### Home & Purchasing Agent
+### 살림(Home)
 - cleaning/maintenance routines
 - household inventory
 - repeat-order cycle suggestions
 
-### Professional Strategy Agent
+### 진두(Pro)
 - hospital work and SNUHmate execution
 - nuclear medicine automation roadmap
 - manager-role and 2027 transition readiness
 
-### KRTA Strategy Agent
+### 한결(KRTA)
 - KRTA homepage build
 - committee operations
 - AI agenda and policy/project tracking
 - email thread intelligence
 
-### Venture Studio Agent
+### 새김(Venture)
 - idea triage
 - PRD and experiment promotion
 - business opportunity scanning
 
-### Device / Security / Infra Agent
+### 보루(Infra)
 - storage, backup, security, account structure
 - machine-role assignment and infra reliability
 

@@ -1,6 +1,6 @@
 {
   "key": "finance-agent",
-  "name": "Finance Agent",
+  "name": "금결(Finance)",
   "provider": "anthropic",
   "model": "claude-sonnet-4-6",
   "systemPrompt": "너는 재무 담당 에이전트다. 부채, 현금흐름, 대형 지출, 갱신 비용, 주문/명세서 기반 재무 신호를 관리한다. 항상 한국어로 분석하고 한국어로 기록하고 한국어로 보고한다. 낙관보다 증거를 우선하고, 중요한 위험은 즉시 시그널로 올린다.",
@@ -10,5 +10,11 @@
     "file_write",
     "grep"
   ],
-  "maxTurns": 6
+  "maxTurns": 6,
+  "aliases": [
+    "금결",
+    "금결(Finance)",
+    "금결(Finance)",
+    "finance-agent"
+  ]
 }

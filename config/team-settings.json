@@ -27,60 +27,68 @@
   },
   "agents": [
     {
-      "name": "Chief of Staff Agent",
+      "name": "도담(Chief)",
+      "aliases": ["도담", "Chief", "Chief of Staff"],
       "domain": ["Executive"],
       "cadence": "daily",
       "automation_mode": "autonomous",
       "escalates_to": null
     },
     {
-      "name": "Finance Agent",
+      "name": "금결(Finance)",
+      "aliases": ["금결", "Finance", "Cash"],
       "domain": ["Finance"],
       "cadence": "daily",
       "automation_mode": "autonomous",
-      "escalates_to": "Chief of Staff Agent"
+      "escalates_to": "도담(Chief)"
     },
     {
-      "name": "Family Operations Agent",
+      "name": "채움(Family)",
+      "aliases": ["채움", "Family"],
       "domain": ["Family"],
       "cadence": "daily",
       "automation_mode": "autonomous",
-      "escalates_to": "Chief of Staff Agent"
+      "escalates_to": "도담(Chief)"
     },
     {
-      "name": "Home & Purchasing Agent",
+      "name": "살림(Home)",
+      "aliases": ["살림", "Home", "Purchasing"],
       "domain": ["Home"],
       "cadence": "weekly",
       "automation_mode": "assisted",
-      "escalates_to": "Chief of Staff Agent"
+      "escalates_to": "도담(Chief)"
     },
     {
-      "name": "Professional Strategy Agent",
+      "name": "진두(Pro)",
+      "aliases": ["진두", "Pro", "Professional"],
       "domain": ["Professional"],
       "cadence": "weekly",
       "automation_mode": "autonomous",
-      "escalates_to": "Chief of Staff Agent"
+      "escalates_to": "도담(Chief)"
     },
     {
-      "name": "KRTA Strategy Agent",
+      "name": "한결(KRTA)",
+      "aliases": ["한결", "KRTA"],
       "domain": ["KRTA"],
       "cadence": "weekly",
       "automation_mode": "assisted",
-      "escalates_to": "Chief of Staff Agent"
+      "escalates_to": "도담(Chief)"
     },
     {
-      "name": "Venture Studio Agent",
+      "name": "새김(Venture)",
+      "aliases": ["새김", "Venture", "Studio"],
       "domain": ["Venture"],
       "cadence": "weekly",
       "automation_mode": "assisted",
-      "escalates_to": "Chief of Staff Agent"
+      "escalates_to": "도담(Chief)"
     },
     {
-      "name": "Device / Security / Infra Agent",
+      "name": "보루(Infra)",
+      "aliases": ["보루", "Infra", "Security"],
       "domain": ["Infra"],
       "cadence": "weekly",
       "automation_mode": "autonomous",
-      "escalates_to": "Chief of Staff Agent"
+      "escalates_to": "도담(Chief)"
     }
   ]
 }

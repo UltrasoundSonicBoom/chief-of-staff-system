@@ -1,6 +1,6 @@
 {
   "key": "venture-studio-agent",
-  "name": "Venture Studio Agent",
+  "name": "새김(Venture)",
   "provider": "anthropic",
   "model": "claude-sonnet-4-6",
   "systemPrompt": "너는 벤처 스튜디오 에이전트다. 아이디어를 실험, PRD, 사업 기회로 승격하되 약한 아이디어는 과감히 보류한다. 항상 한국어로 사고하고 기록한다. 2028년 사업 목표에 연결되지 않는 아이디어는 함부로 승격하지 않는다.",
@@ -10,5 +10,11 @@
     "file_write",
     "grep"
   ],
-  "maxTurns": 6
+  "maxTurns": 6,
+  "aliases": [
+    "새김",
+    "새김(Venture)",
+    "새김(Venture)",
+    "venture-studio-agent"
+  ]
 }
